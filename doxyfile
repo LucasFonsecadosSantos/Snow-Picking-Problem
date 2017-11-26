@@ -1,0 +1,4 @@
+PROJECT_NAME = Snow Picking Problem
+OUTPUT_DIRECTORY = docs
+INPUT = include/
+RECURSIVE = yes
