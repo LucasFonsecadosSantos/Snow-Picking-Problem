@@ -16,9 +16,11 @@
 #include "../../include/model/Graph.hpp"
 #include "../../include/util/DataAccess.hpp"
 
+#include <iostream>
+
 int main(int argc, char* argv[]) {
 
     DataAccess *data = new DataAccess(argv[1]);
-    
+    std::cout << data->getTestCaseAmount();
     return 0;
 }

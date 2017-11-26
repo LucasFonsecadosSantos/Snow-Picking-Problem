@@ -16,7 +16,7 @@
 #ifndef DATA_ACCESS_H
 #define DATA_ACCESS_H 1
 
-#include "Parser.h"
+#include "Parser.hpp"
 
 #include <string>
 #include <fstream>
@@ -52,14 +52,14 @@ class DataAccess {
          * 
          * \return int A integer edge set cardinality.
          */
-        int getEdgesSetCardinality();
+        int getEdgeSetCardinality();
 
         /**
          * \brief getVertexsSetCardinality
          * 
          * \return int A integer vertex set cardinality.
          */
-        int getVertexSetCardinality();
+        int getVerticeSetCardinality();
 
         /**
          * \brief getGraphDescription
@@ -71,16 +71,9 @@ class DataAccess {
          */
         int** getGraphDescription();
 
-        /**
-         * \brief getDataValidRowsAmount
-         * 
-         * \return int A integer valid rows amount counted.
-         */
-        int getDataValidRowsAmount();
-
-        int getSourceVertex();
-        int getTargetVertex();
-        int getPeoplesAmount();
+        int getOriginCoordinate();
+        int getTargetCoordinate();
+        int getTestCaseAmount();
 
     private:
         
@@ -93,6 +86,7 @@ class DataAccess {
          * \var outputFile This is a output file of data access object.
          */
         std::fstream outputFile;
+        std::string outputFileName;
 
         /**
          * \var inputFileName Input data text file name.
@@ -103,7 +97,7 @@ class DataAccess {
          * \var pharser A pharser object for information extraction of strings.
          * 
          */
-        Parser* parser;
+        //Parser* parser;
 
         /**
          * \brief fast_atoi
