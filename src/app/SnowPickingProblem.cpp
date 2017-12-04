@@ -23,6 +23,6 @@ int main(int argc, char* argv[]) {
 
     DataAccess *data = new DataAccess(argv[1]);
     std::cout << data->getTestCaseAmount();
-    //cartesianPoint point = data->getCartesianOriginPoint();
+    cartesianPoint *point = data->getCartesianOriginPoint();
     return 0;
 }

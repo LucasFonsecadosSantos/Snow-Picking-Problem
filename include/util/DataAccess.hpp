@@ -72,16 +72,17 @@ class DataAccess {
          */
         int** getGraphDescription();
 
-        cartesianPoint getCartesianOriginPoint();
+        cartesianPoint* getCartesianOriginPoint();
 
         int getTestCaseAmount();
 
     private:
         
+        Parser *parser;
         /**
          * \var inputFile This is a input file of data access object.
          */
-        std::fstream *inputFile;
+        std::fstream inputFile;
 
         /**
          * \var outputFile This is a output file of data access object.
