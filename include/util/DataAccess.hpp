@@ -17,6 +17,7 @@
 #define DATA_ACCESS_H 1
 
 #include "Parser.hpp"
+#include "../model/Structs.hpp"
 
 #include <string>
 #include <fstream>
@@ -71,8 +72,8 @@ class DataAccess {
          */
         int** getGraphDescription();
 
-        int getOriginCoordinate();
-        int getTargetCoordinate();
+        cartesianPoint getCartesianOriginPoint();
+
         int getTestCaseAmount();
 
     private:
@@ -80,7 +81,7 @@ class DataAccess {
         /**
          * \var inputFile This is a input file of data access object.
          */
-        std::fstream inputFile;
+        std::fstream *inputFile;
 
         /**
          * \var outputFile This is a output file of data access object.

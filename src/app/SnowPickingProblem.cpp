@@ -14,6 +14,7 @@
  * This files describes ...
  */
 #include "../../include/model/Graph.hpp"
+#include "../../include/model/Structs.hpp"
 #include "../../include/util/DataAccess.hpp"
 
 #include <iostream>
@@ -22,5 +23,6 @@ int main(int argc, char* argv[]) {
 
     DataAccess *data = new DataAccess(argv[1]);
     std::cout << data->getTestCaseAmount();
+    //cartesianPoint point = data->getCartesianOriginPoint();
     return 0;
 }

@@ -33,8 +33,8 @@ class Graph {
     public:
         Graph();
         ~Graph();
-        void setVerticeSetCardinality(int);
-        void setEdgeSetCardinality(int);
+        inline void setVerticeSetCardinality(int);
+        inline void setEdgeSetCardinality(int);
         void setAdajacencyMatrix(int);
         inline int getVerticeSetCardinality();
         inline int getEdgeSetCardinality();

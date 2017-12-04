@@ -17,9 +17,14 @@
  */
 #include "../../include/util/DataAccess.hpp"
 #include "../../include/util/Parser.hpp"
+
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <string>
+
 DataAccess::DataAccess(std::string fileName) {
-    this->inputFileName = fileName;
+    this->inputFileName = fileName.c_str();
     this->outputFileName = "out.txt";
     //this->parser = new Parser();
 }
@@ -40,22 +45,22 @@ int** DataAccess::getGraphDescription() {
 
 }
 
-int DataAccess::getOriginCoordinate() {
-
-}
-
-int DataAccess::getTargetCoordinate() {
+cartesianPoint getCartesianOriginPoint() {
 
 }
 
 int DataAccess::getTestCaseAmount() {
-    this->inputFile.open(this->inputFileName, std::fstream::in | std::fstream::out | std::fstream::app);
-    std::string firstLine = "";
-    if(this->inputFile.is_open()) {
+    this->inputFile->open(this->inputFileName, std::fstream::in | std::fstream::out | std::fstream::app);
+    //std::string firstLine = "";
+    /*if(this->inputFile->is_open()) {
         getline(this->inputFile, firstLine);
+        //firstLine = this->parser->removeWhiteSpaces(firstLine);
+        
+        //return std::stoi(str_dec,&firstLine)
         return atoi(firstLine.c_str());
     }else {
         return 0;
-    }
+    }*/
+    return 0;
 }
 

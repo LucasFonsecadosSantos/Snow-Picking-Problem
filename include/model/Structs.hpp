@@ -13,19 +13,12 @@
  * 
  * This files describes ...
  */
-#ifndef PARSER_H
-#define PARSER_H 1
+#ifndef STRUCTS_H
+#define STRUCTS_H 1
 
-#include <string>
-#include <vector>
-
-class Parser {
-	
-	public:
-		Parser();
-		~Parser();
-		std::string removeWhiteSpaces(std::string);
-		std::vector<int>* getTokens(std::string);
+struct cartesianPoint {
+	int x;
+	int y;
 };
 
 #endif
