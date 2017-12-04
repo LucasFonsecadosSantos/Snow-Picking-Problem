@@ -47,7 +47,7 @@ int** DataAccess::getGraphDescription() {
 }
 
 cartesianPoint* DataAccess::getCartesianOriginPoint() {
-    cartesianPoint *point;
+    cartesianPoint *point = new cartesianPoint;
     this->inputFile.open(this->inputFileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::app);
     std::string line = "";
     if(this->inputFile.is_open()) {
