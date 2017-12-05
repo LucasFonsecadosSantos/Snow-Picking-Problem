@@ -21,4 +21,12 @@ struct cartesianPoint {
 	int y;
 };
 
+struct testCase {
+	int index;
+	int rowAmount;
+	int columnAmount;
+	cartesianPoint* points;
+	int **adjacencyMatrix;
+};
+
 #endif

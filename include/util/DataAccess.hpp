@@ -62,15 +62,7 @@ class DataAccess {
          */
         int getVerticeSetCardinality();
 
-        /**
-         * \brief getGraphDescription
-         * 
-         * This method returns the graph text representation with all
-         * edges wrote.
-         * 
-         * \return int** A integer matrix pointer with the whole graph information.
-         */
-        int** getGraphDescription();
+        std::vector<testCase*>* getTestCases();
 
         cartesianPoint* getCartesianOriginPoint();
 

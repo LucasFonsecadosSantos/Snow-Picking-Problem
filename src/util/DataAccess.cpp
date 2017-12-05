@@ -42,11 +42,72 @@ int DataAccess::getVerticeSetCardinality() {
 
 }
 
-int** DataAccess::getGraphDescription() {
 
+std::vector<testCase*>* DataAccess::getTestCases() {
+    testCase *tmpTestCase;
+    cartesianPoint* tmpCartesianPoint;
+    std::vector<int> *tokens = new std::vector<int>();
+    std::vector<testCase*> *testCaseArray = new std::vector<testCase*>();
+    this->inputFile.open(this->inputFileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::app);
+    std::string tmpLine = "";
+    std::string line = "";
+    int counter = 0;
+    bool begin = true;
+
+    if(this->inputFile.is_open()) {
+        while(getline(this->inputFile, line)) {
+            if(line.size() == 0) {
+                std::cout << "one";
+                begin = true;
+                continue;
+            }else if(line.size() > 0 && begin) {
+                begin = false;
+                counter++;
+                testCaseArray->push_back(new testCase);
+                testCaseArray->back()->index = counter;
+                testCaseArray->back()->points = new cartesianPoint;
+                tokens = this->parser->getTokens(line);
+                testCaseArray->back()->points->x = tokens->at(0);
+                testCaseArray->back()->points->y = tokens->at(1);
+                continue;
+            }else if(line.size() > 0 && !begin) {
+                tokens = this->parser->getTokens(line);
+                testCaseArray->back()->columnAmount = tokens->size();
+                int rowTmpCounter = 0;
+                std::streampos position = this->inputFile.tellg();
+                getline(this->inputFile, line);
+                std::cout << std::endl << line << std::endl;
+                while(line.size() > 0) {
+                    rowTmpCounter++;
+                    getline(this->inputFile, line);
+                    std::cout << std::endl << line << std::endl;
+                }
+                this->inputFile.seekg(position);
+                testCaseArray->back()->adjacencyMatrix = new int*[rowTmpCounter];
+                for(unsigned row = 0 ; row < rowTmpCounter ; row++) {
+                    testCaseArray->back()->adjacencyMatrix[row] = new int[testCaseArray->back()->columnAmount];
+                    getline(this->inputFile, line);
+                    tokens = this->parser->getTokens(line);
+                    for(unsigned u = 0 ; u < tokens->size() ; u++) {
+                        testCaseArray->back()->adjacencyMatrix[row][u] = tokens->at(u);
+                    }
+                }
+                continue;
+            }
+            std::cout << "LIXO ";
+        }
+
+        return NULL;
+    }else {
+        this->inputFile.close();
+        return NULL;
+    }
 }
 
 cartesianPoint* DataAccess::getCartesianOriginPoint() {
+    return NULL;
+}
+/*cartesianPoint* DataAccess::getCartesianOriginPoint() {
     cartesianPoint *point = new cartesianPoint;
     this->inputFile.open(this->inputFileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::app);
     std::string line = "";
@@ -65,7 +126,7 @@ cartesianPoint* DataAccess::getCartesianOriginPoint() {
     this->inputFile.close();
     return NULL;
     
-}
+}*/
 
 int DataAccess::getTestCaseAmount() {
     this->inputFile.open(this->inputFileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::app);
